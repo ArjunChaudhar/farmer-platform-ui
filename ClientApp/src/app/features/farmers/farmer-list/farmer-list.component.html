@@ -1,0 +1,78 @@
+<app-nav-menu></app-nav-menu>
+
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between mb-3">
+
+    <h3>
+      Farmers
+    </h3>
+
+    <a routerLink="/add-farmer"
+       class="btn btn-primary">
+
+      Add Farmer
+    </a>
+
+  </div>
+
+  <div class="mb-3">
+
+    <input type="text"
+           class="form-control"
+           placeholder="Search Farmer"
+           [(ngModel)]="searchText"
+           (input)="searchFarmers()">
+
+  </div>
+
+  <table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+
+      <tr>
+
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Village</th>
+        <th>State</th>
+        <th>Land</th>
+        <th>Actions</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let farmer of farmers">
+
+        <td>{{ farmer.name }}</td>
+        <td>{{ farmer.mobile }}</td>
+        <td>{{ farmer.village }}</td>
+        <td>{{ farmer.state }}</td>
+        <td>{{ farmer.landArea }}</td>
+
+        <td>
+
+          <button class="btn btn-warning btn-sm me-2"
+                  (click)="editFarmer(farmer.id)">
+
+            Edit
+          </button>
+
+          <button class="btn btn-danger btn-sm"
+                  (click)="deleteFarmer(farmer.id)">
+
+            Delete
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

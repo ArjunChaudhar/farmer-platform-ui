@@ -13,6 +13,9 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { FarmerListComponent } from './features/farmers/farmer-list/farmer-list.component';
+import { AddFarmerComponent } from './features/farmers/add-farmer/add-farmer.component';
+import { EditFarmerComponent } from './features/farmers/edit-farmer/edit-farmer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { AuthInterceptor } from './auth.interceptor';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    DashboardComponent
+    DashboardComponent,
+    FarmerListComponent,
+    AddFarmerComponent,
+    EditFarmerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -49,6 +55,23 @@ import { AuthInterceptor } from './auth.interceptor';
       {
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'farmers',
+        component: FarmerListComponent,
+        canActivate: [AuthGuard]
+      },
+
+      {
+        path: 'add-farmer',
+        component: AddFarmerComponent,
+        canActivate: [AuthGuard]
+      },
+
+      {
+        path: 'edit-farmer/:id',
+        component: EditFarmerComponent,
         canActivate: [AuthGuard]
       }
 
